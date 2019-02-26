@@ -29,5 +29,21 @@ $(document).ready(function() {
     );
     $('body').append(dancer.$node);
   });
+
+  $('.addDancerButton').on('click', function(event) {
+    var twerkerMakerFunctionName = $(this).data('dancer-maker-function-name');
+
+    // get the maker function for the kind of twerker we're supposed to make
+    var twerkerMakerFunction = window[twerkerMakerFunctionName];
+
+    // make a twerker with a random position
+
+    var twerker = new twerkerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(twerker.$node);
+  });
 });
 
