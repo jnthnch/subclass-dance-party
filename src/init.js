@@ -1,6 +1,8 @@
 $(document).ready(function() {
   window.dancers = [];
 
+
+
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -21,29 +23,52 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
 
-  $('.addDancerButton').on('click', function(event) {
-    var twerkerMakerFunctionName = $(this).data('dancer-maker-function-name');
+  
 
-    // get the maker function for the kind of twerker we're supposed to make
-    var twerkerMakerFunction = window[twerkerMakerFunctionName];
+  $('.lineUpButton').on('click', function(event) {
+    var possiblePositions = ['left', 'right', 'top', 'bottom'];
+    var randomNumberBelow4 = Math.floor(Math.random() * 4)
+    var lineThem = function (position) {
+        // for (let i = 0; i < window.dancers.length; i++) {
+        //   window.dancers[i].$node[0].style.left = $("body").width() + 'vm';
+        // }
+      if (position === 'left') {
+        for (let i = 0; i < window.dancers.length; i++) {
+          window.dancers[i].$node[0].style.left = '50px';
+        };
+      }
 
-    // make a twerker with a random position
+      if (position === 'right') {
+        for (let i = 0; i < window.dancers.length; i++) {
+          window.dancers[i].$node[0].style.left = '1500px';
+        }
+      }
 
-    var twerker = new twerkerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
-    );
-    $('body').append(twerker.$node);
+      if (position === 'top') {
+        for (let i = 0; i < window.dancers.length; i++) {
+          window.dancers[i].$node[0].style.top = '50px';
+        }
+      }
+
+      if (position === 'bottom') {
+        for (let i = 0; i < window.dancers.length; i++) {
+          window.dancers[i].$node[0].style.top = '500px';
+        }
+      }
+
+    }
+    console.log(possiblePositions[randomNumberBelow4])
+    lineThem(possiblePositions[randomNumberBelow4]);
   });
-});
 
+ 
+});

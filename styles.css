@@ -4,24 +4,42 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .addTwerkerButton, .addRaverButton, .lineUpButton{
   padding:5px 12px;
   float:right;
 }
 .topbar{
   height:32px;
-  background-color: #555;
+  background-color: rgb(75, 131, 235);
 }
 .title{
-  background-color: #777;
+  background-color: rgb(206, 24, 24);
 }
 .dancer{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
 }
+
+.raver{
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  -webkit-transition: left 2s, right 2s, top 2s, bottom 2s;
+  /* transition: transform .2s; */
+}
+
+.raver:hover{
+  -ms-transform: scale(3); 
+  -webkit-transform: scale(3); 
+  transform: scale(3);
+}
+
